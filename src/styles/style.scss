@@ -1,5 +1,7 @@
 @use "./components/btn";
 @use "./pages/index";
+@use "./pages/settings";
+@use "./abstract/mixin";
 
 @font-face {
   font-family: "red_rose";
@@ -8,11 +10,7 @@
 
 body {
   height: 100vh;
-  font-family: "red_rose", sans-serif;
-  background-color: rgb(47, 49, 49);
-  background-image: url("/assets/stadia_controller.png");
-  background-repeat: no-repeat;
-  background-position: bottom left;
+  margin: 0;
 }
 
 

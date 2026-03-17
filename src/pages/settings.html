@@ -4,11 +4,51 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Settings</title>
+    <link rel="stylesheet" href="../styles/style.scss" />
   </head>
   <body>
     <main class="settings-screen">
-      <h1>Settings</h1>
-      <div></div>
+      <h1 class="settings-screen__title">Settings</h1>
+      <div class="settings-screen__content">
+        <div class="settings-screen__left">
+          <div class="setting__game-themes">
+              <span class="setting__title"><img src="/assets/palette.png" alt=""> Game themes</span>
+              <div class="setting__options">
+                <ul class="setting__options__list">
+                  <li><input type="checkbox" id="code-vibes" name="code-vibes" checked> Code vibes theme</li>
+                  <li><input type="checkbox" id="fruits" name="fruits" value="Fruits"> Gaming theme</li>
+                </ul>
+              </div>
+          </div>
+          <div class="setting__choose-player">
+              <span class="setting__title"><img src="/assets/user.png" alt=""> <img src="/assets/chess_pawn.png" alt=""> Choose player</span>
+              <div class="setting__options">
+                <ul class="setting__options__list">
+                  <li><input type="checkbox" id="player1" name="player1" checked> Blue</li>
+                  <li><input type="checkbox" id="player2" name="player2"> Orange</li>
+                </ul>
+              </div>
+          </div>
+          <div class="setting__board-size">
+              <span class="setting__title"><img src="/assets/grid.png" alt=""> <img src="/assets/style.png" alt=""> Board size</span>
+              <div class="setting__options">
+                <ul class="setting__options__list">
+                  <li><input type="checkbox" id="board-4x4" name="board-4x4" checked>16 cards</li>
+                  <li><input type="checkbox" id="board-6x6" name="board-6x6"> 24 cards</li>
+                  <li><input type="checkbox" id="board-8x8" name="board-8x8"> 32 cards</li>
+                </ul>
+              </div>
+          </div>
+        </div>
+        <div class="settings-screen__right">
+          <div class="pre-view-game">
+            <img src="/assets/preview-code.png" alt="Preview">
+          </div>
+
+          <div class="choose-bar"></div>
+
+        </div>
+      </div>
     </main>
   </body>
 </html>

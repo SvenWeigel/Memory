@@ -1,0 +1,54 @@
+@use '../abstract/mixin' as mx;
+
+.settings-screen {
+  padding: 114px 170px 0 167px;
+  font-family: "red_rose", sans-serif;
+
+  &__left {
+    display: flex;
+    flex-direction: column;
+    gap: 62px;
+  }
+
+  &__title {
+    font-size: 54px;
+    font-weight: 700;
+    margin-bottom: 62px;
+
+  }
+  &__content {
+  
+    display: flex;
+    justify-content: space-between;
+
+  }
+}
+
+.setting {
+  &__title {
+    font-size: 24px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__options__list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 14px;
+    margin-top: 24px;
+
+    li {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      input {
+        @include mx.checkbox;
+      }
+    }
+  }
+}
+

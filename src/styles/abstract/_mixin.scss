@@ -1,6 +1,33 @@
-@mixin flex-center ($flex-direction: row) {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: $flex-direction;
+@mixin flex-center($flex-direction: row) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: $flex-direction;
+}
+
+@mixin checkbox {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #000;
+  border-radius: 50%;
+  background: #fff;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+
+  &::before {
+    content: "";
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #000;
+    transform: scale(0);
+    transition: transform 0.2s ease;
+  }
+
+  &:checked::before {
+    transform: scale(1);
+  }
 }
