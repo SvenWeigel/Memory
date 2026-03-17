@@ -1,4 +1,19 @@
-body{
-    height: 100vh;
-    background-color: rgb(47, 49, 49);
+@use "./components/btn";
+@use "./pages/index";
+
+@font-face {
+  font-family: "red_rose";
+  src: url("/fonts/red_Rose/RedRose-VariableFont_wght.ttf") format("truetype");
 }
+
+body {
+  height: 100vh;
+  font-family: "red_rose", sans-serif;
+  background-color: rgb(47, 49, 49);
+  background-image: url("/assets/stadia_controller.png");
+  background-repeat: no-repeat;
+  background-position: bottom left;
+}
+
+
+
