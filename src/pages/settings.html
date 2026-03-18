@@ -9,9 +9,9 @@
   </head>
   <body>
     <main class="settings-screen">
-      <div class="title-div">
+      <div class="settings-screen__title-wrap">
         <h1 class="settings-screen__title">Settings</h1>
-        <div class="seperator"></div>
+        <div class="settings-screen__underline" aria-hidden="true"></div>
       </div>
       <div class="settings-screen__content">
         <div class="settings-screen__left">
@@ -22,12 +22,7 @@
             <div class="setting__options">
               <ul class="setting__options__list">
                 <li>
-                  <input
-                    type="checkbox"
-                    id="code-vibes"
-                    name="code-vibes"
-                    checked
-                  />
+                  <input type="checkbox" id="code-vibes" name="code-vibes" />
                   Code vibes theme
                 </li>
                 <li>
@@ -49,7 +44,7 @@
             <div class="setting__options">
               <ul class="setting__options__list">
                 <li>
-                  <input type="checkbox" id="player1" name="player1" checked />
+                  <input type="checkbox" id="player1" name="player1" />
                   Blue
                 </li>
                 <li>
@@ -65,12 +60,8 @@
             <div class="setting__options">
               <ul class="setting__options__list">
                 <li>
-                  <input
-                    type="checkbox"
-                    id="board-4x4"
-                    name="board-4x4"
-                    checked
-                  />16 cards
+                  <input type="checkbox" id="board-4x4" name="board-4x4" />16
+                  cards
                 </li>
                 <li>
                   <input type="checkbox" id="board-6x6" name="board-6x6" /> 24
@@ -91,7 +82,7 @@
 
           <div class="choose-bar">
             <div class="choose-bar__item">
-              <span class="choose-bar__theme">Code Theme  </span>
+              <span class="choose-bar__theme">Code Theme </span>
               <div class="__separator"></div>
             </div>
             <div class="choose-bar__item">
@@ -102,7 +93,7 @@
               <span class="choose-bar__size">16 Cards</span>
             </div>
             <div class="choose-bar__item">
-              <button class="start-btn">
+              <button class="start-btn" id="start-btn" type="button" disabled>
                 <img
                   class="choose-bar__btn__icon"
                   src="/assets/smart_display.png"
