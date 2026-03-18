@@ -1,4 +1,4 @@
-@use '../abstract/mixin' as mx;
+@use "../abstract/mixin" as mx;
 
 .settings-screen {
   padding: 114px 170px 0 167px;
@@ -10,17 +10,22 @@
     gap: 62px;
   }
 
+  &__right {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    align-items: end;
+  }
+
   &__title {
     font-size: 54px;
     font-weight: 700;
     margin-bottom: 62px;
-
   }
   &__content {
-  
     display: flex;
     justify-content: space-between;
-
+    max-width: 1440px;
   }
 }
 
@@ -52,8 +57,68 @@
   }
 }
 
-.pre-view-game{
-  background-color: rgb(71, 71, 71);
-  border-radius: 12px;
+.seperator {
+  width: 4px;
+  height: 24px;
+  background-color: rgb(241, 255, 41);
 }
 
+.title-div {
+  display: flex;
+  align-items: center;
+}
+
+.pre-view-game {
+  background-color: rgb(71, 71, 71);
+  border-radius: 12px;
+  text-align: center;
+  width: 460px;
+  height: 412px;
+}
+
+.choose-bar {
+  display: flex;
+  gap: 16px;
+  font-size: 20px;
+  background-color: grey;
+  margin-top: 20px;
+  padding: 14px 20px 14px 20px;
+
+  &__item {
+    display: flex;
+    align-items: center;
+  }
+
+  .__separator {
+    width: 4px;
+    height: 56px;
+    background-color: rgb(241, 255, 41);
+    transform: rotate(35deg);
+    margin-left: 20px;
+  }
+}
+
+.start-btn {
+  @include mx.flex-center;
+  gap: 20px;
+  font-size: 24px;
+  font-weight: 700;
+  background-color: #f0ea6e;
+  padding: 14px 20px;
+  border: none;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.1);
+    transition: 0.3s ease-in-out;
+  }
+
+  &:hover .choose-bar__btn__icon {
+    transform: rotate(-15deg);
+  }
+
+  .choose-bar__btn__icon {
+    transition: transform 0.3s ease;
+    transform-origin: center;
+  }
+}
