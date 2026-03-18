@@ -1,0 +1,57 @@
+.game-content{
+    height: 100vh;
+    margin: 0;  
+    background-color: rgb(47, 49, 49);
+    font-family: "red_rose", sans-serif;
+}
+
+header{
+    display: flex;
+    justify-content: space-around;
+    color: white;
+    padding-top: 41px;
+}
+
+.header__score{
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    background-color: #86E9D633;
+    padding: 12px;
+
+    &__left{
+        color: #2BB1FF;
+
+        & span{
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+    }
+    &__right{
+        color: #F58E39;
+
+        & span{
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+    }
+}
+
+.header__current-player{
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    align-self: flex-end;
+    font-size: 24px;
+    font-weight: 400;
+    
+
+    & span{
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+}

@@ -26,3 +26,29 @@
         transform-origin: center;
     }
 }
+
+.exit-btn{
+    @include mx.flex-center;
+    gap: 20px;
+    color: white;
+    font-size: 24px;
+    font-weight: 400;
+    background-color: #86E9D633;
+    padding: 14px 20px;
+    border: none;
+    cursor: pointer;
+
+    &:hover {
+        transform: scale(1.1);
+        transition: 0.3s ease-in-out;
+
+        .exit-btn__icon {
+            transform: rotate(15deg);
+        }
+    }
+
+    &__icon {
+        transition: transform 0.3s ease;
+        transform-origin: center;
+    }
+}

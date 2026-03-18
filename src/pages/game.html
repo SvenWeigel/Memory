@@ -1,11 +1,45 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Memmory</title>
-</head>
-<body>
-    <h1>Memory Game</h1>
-</body>
+    <link rel="stylesheet" href="../styles/style.scss" />
+    <script src="../scripts/game.ts" defer></script>
+  </head>
+  <body>
+    <main class="game-content">
+    <header>
+      <div class="header__score">
+        <div class="header__score__left">
+          <span>
+            <img src="/assets/label-blue.png" alt="blue-label" />
+            Blue
+            <span>0</span>
+            </span>
+        </div>
+        <div class="header__score__right">
+          <span>
+            <img src="/assets/label-orange.png" alt="orange-label" />
+            Orange
+            <span>0</span>
+            </span>
+        </div>
+      </div>
+      <div class="header__current-player">
+        <span>
+          Current Player: 
+          <img src="/assets/label-blue.png" alt="blue-label" />
+        </span>
+      </div>
+      <div class="header__exit">
+        <button class="exit-btn"><img src="/assets/move_item.png" alt="exit-btn__icon">Exit Game</button>
+      </div>
+    </header>
+
+    <section class="game-board">
+      <div class="game-board__grid"></div>
+    </section>
+  </main>
+  </body>
 </html>
