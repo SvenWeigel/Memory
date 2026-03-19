@@ -55,3 +55,18 @@ header{
         gap: 8px;
     }
 }
+
+.game-board{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+
+    &__grid{
+        background-color: pink;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 16px;
+        padding: 32px;
+    }
+}

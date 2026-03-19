@@ -67,6 +67,12 @@ document.addEventListener("DOMContentLoaded", () => {
   if (!startBtn) return;
 
   startBtn.addEventListener("click", () => {
+    const boardSizeText = getCheckedLabel(".setting__board-size");
+    const selectedCards = Number.parseInt(boardSizeText, 10);
+    if (!Number.isNaN(selectedCards)) {
+      localStorage.setItem("memoryCardCount", String(selectedCards));
+    }
+
     window.location.href = "./game.html";
   });
 });
