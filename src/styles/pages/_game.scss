@@ -3,6 +3,9 @@
     margin: 0;  
     background-color: rgb(47, 49, 49);
     font-family: "red_rose", sans-serif;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
 }
 
 header{
@@ -10,6 +13,7 @@ header{
     justify-content: space-around;
     color: white;
     padding-top: 41px;
+    flex-shrink: 0;
 }
 
 .header__score{
@@ -60,13 +64,12 @@ header{
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100%;
+    flex: 1;
+    min-height: 0;
+    padding: 16px 24px 24px;
+    overflow: auto;
 
     &__grid{
-        background-color: pink;
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 16px;
-        padding: 32px;
+        width: fit-content;
     }
 }

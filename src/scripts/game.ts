@@ -1,3 +1,5 @@
+import { buildCodeThemePairs, codeThemeBackSide } from "./cards";
+
 let grid = document.querySelector(".game-board__grid") as HTMLDivElement;
 
 function getSelectedCardCount() {
@@ -15,19 +17,45 @@ function getGridColumnCount(cardCount: number) {
     return 4;
 }
 
+function getCardSize(cardCount: number) {
+    if (cardCount === 24) return 84;
+    if (cardCount === 32) return 64;
+    return 110;
+}
+
 function renderGrid(){
     if(grid.innerHTML === ""){
         const cardCount = getSelectedCardCount();
         const columnCount = getGridColumnCount(cardCount);
+        const cardSize = getCardSize(cardCount);
+        const cardPairs = buildCodeThemePairs(cardCount);
 
         grid.style.display = "grid";
-        grid.style.gridTemplateColumns = `repeat(${columnCount}, 1fr)`;
-        grid.style.gap = "16px";
-        grid.style.padding = "32px";
+        grid.style.gridTemplateColumns = `repeat(${columnCount}, ${cardSize}px)`;
+        grid.style.gap = "20px";
 
-        for(let i = 0; i < cardCount; i++){
-            const card = document.createElement("div");
+        for(let i = 0; i < cardPairs.length; i++){
+            const card = document.createElement("button");
+            card.type = "button";
             card.classList.add("card", `card-${i}`);
+            card.setAttribute("aria-label", `Memory card ${i + 1}`);
+
+            const cardInner = document.createElement("div");
+            cardInner.classList.add("card__inner");
+
+            const backFace = document.createElement("img");
+            backFace.classList.add("card__face", "card__face--back");
+            backFace.src = codeThemeBackSide;
+            backFace.alt = "Card back";
+
+            const frontFace = document.createElement("img");
+            frontFace.classList.add("card__face", "card__face--front");
+            frontFace.src = cardPairs[i];
+            frontFace.alt = "Card front";
+
+            cardInner.appendChild(backFace);
+            cardInner.appendChild(frontFace);
+            card.appendChild(cardInner);
             grid.appendChild(card);
         }
     }

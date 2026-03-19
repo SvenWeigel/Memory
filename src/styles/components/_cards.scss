@@ -1,0 +1,49 @@
+.game-board__grid {
+	width: fit-content;
+	max-width: 100%;
+	margin: 0 auto;
+}
+
+.card {
+	position: relative;
+	border: none;
+	padding: 0;
+	background: transparent;
+	aspect-ratio: 1 / 1;
+	cursor: pointer;
+	width: 100%;
+	justify-self: stretch;
+}
+
+.card__inner {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+
+.card__face {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	border-radius: 12px;
+}
+
+.card__face--front {
+	opacity: 0;
+}
+
+.card.is-revealed .card__face--front {
+	opacity: 1;
+}
+
+.card.is-revealed .card__face--back {
+	opacity: 0;
+}
+
+@media (max-width: 900px) {
+	.game-board__grid {
+		max-width: 100%;
+	}
+}
