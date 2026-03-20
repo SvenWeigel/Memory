@@ -1,75 +1,74 @@
-.game-content{
-    height: 100vh;
-    margin: 0;  
-    background-color: rgb(47, 49, 49);
-    font-family: "red_rose", sans-serif;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
+.game-content {
+  height: 100vh;
+  margin: 0;
+  background-color: rgb(47, 49, 49);
+  font-family: "red_rose", sans-serif;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
-header{
-    display: flex;
-    justify-content: space-around;
-    color: white;
-    padding-top: 41px;
-    flex-shrink: 0;
+header {
+  display: flex;
+  justify-content: space-around;
+  color: white;
+  padding-top: 41px;
+  flex-shrink: 0;
 }
 
-.header__score{
+.header__score {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  background-color: #86e9d633;
+  padding: 12px;
+
+  &__left {
+    color: #2bb1ff;
+
+    & span {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+  }
+  &__right {
+    color: #f58e39;
+
+    & span {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+  }
+}
+
+.header__current-player {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  align-self: flex-end;
+  font-size: 24px;
+  font-weight: 400;
+
+  & span {
     display: flex;
-    gap: 20px;
-    justify-content: center;
     align-items: center;
-    background-color: #86E9D633;
-    padding: 12px;
-
-    &__left{
-        color: #2BB1FF;
-
-        & span{
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-    }
-    &__right{
-        color: #F58E39;
-
-        & span{
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-    }
+    gap: 8px;
+  }
 }
 
-.header__current-player{
-    display: flex;
-    gap: 12px;
-    align-items: center;
-    align-self: flex-end;
-    font-size: 24px;
-    font-weight: 400;
-    
+.game-board {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  min-height: 0;
+  padding: 16px 24px 24px;
+  overflow: auto;
 
-    & span{
-        display: flex;
-        align-items: center;
-        gap: 8px;
-    }
-}
-
-.game-board{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex: 1;
-    min-height: 0;
-    padding: 16px 24px 24px;
-    overflow: auto;
-
-    &__grid{
-        width: fit-content;
-    }
+  &__grid {
+    width: fit-content;
+  }
 }

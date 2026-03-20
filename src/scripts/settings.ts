@@ -68,9 +68,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
   startBtn.addEventListener("click", () => {
     const boardSizeText = getCheckedLabel(".setting__board-size");
+    const playerText = getCheckedLabel(".setting__choose-player");
     const selectedCards = Number.parseInt(boardSizeText, 10);
     if (!Number.isNaN(selectedCards)) {
       localStorage.setItem("memoryCardCount", String(selectedCards));
+    }
+
+    if (playerText === "Blue" || playerText === "Orange") {
+      localStorage.setItem("memoryStartingPlayer", playerText);
     }
 
     window.location.href = "./game.html";
