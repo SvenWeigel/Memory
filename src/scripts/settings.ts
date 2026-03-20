@@ -22,14 +22,12 @@ function updateChooseBarText() {
   const themeText = getCheckedLabel(".setting__game-themes");
   const playerText = getCheckedLabel(".setting__choose-player");
   const sizeText = getCheckedLabel(".setting__board-size");
-
   const themeSpan =
     document.querySelector<HTMLSpanElement>(".choose-bar__theme");
   const playerSpan = document.querySelector<HTMLSpanElement>(
     ".choose-bar__player",
   );
   const sizeSpan = document.querySelector<HTMLSpanElement>(".choose-bar__size");
-
   if (themeSpan && themeText) themeSpan.textContent = themeText;
   if (playerSpan && playerText) playerSpan.textContent = playerText;
   if (sizeSpan && sizeText) sizeSpan.textContent = sizeText;
@@ -57,7 +55,6 @@ document.addEventListener("DOMContentLoaded", () => {
       updateChooseBarText();
     });
   });
-
   updateStartBtn(lists, startBtn);
   updateChooseBarText();
 });
@@ -65,7 +62,6 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener("DOMContentLoaded", () => {
   const startBtn = document.getElementById("start-btn");
   if (!startBtn) return;
-
   startBtn.addEventListener("click", () => {
     const boardSizeText = getCheckedLabel(".setting__board-size");
     const playerText = getCheckedLabel(".setting__choose-player");
@@ -73,11 +69,9 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!Number.isNaN(selectedCards)) {
       localStorage.setItem("memoryCardCount", String(selectedCards));
     }
-
     if (playerText === "Blue" || playerText === "Orange") {
       localStorage.setItem("memoryStartingPlayer", playerText);
     }
-
     window.location.href = "./game.html";
   });
 });
