@@ -11,6 +11,9 @@ const exitButton = document.querySelector<HTMLButtonElement>(".header__exit .exi
 const exitOverlay = document.querySelector<HTMLDivElement>(".exit-overlay");
 const closeOverlayButton = document.querySelector<HTMLButtonElement>(".exit-overlay__btn-close");
 const settingsOverlayButton = document.querySelector<HTMLButtonElement>(".exit-overlay__btn-settings");
+const gameOverOverlay = document.querySelector<HTMLDivElement>(".game-over-overlay");
+const gameOverBlueScore = document.querySelector<HTMLSpanElement>(".game-over-overlay__score-value--blue");
+const gameOverOrangeScore = document.querySelector<HTMLSpanElement>(".game-over-overlay__score-value--orange");
 const endOverlay = document.querySelector<HTMLDivElement>(".end-overlay");
 const endWinnerText = document.querySelector<HTMLHeadingElement>(".end-overlay__winner");
 const endLoserText = document.querySelector<HTMLParagraphElement>(".end-overlay__loser");
@@ -18,7 +21,7 @@ const endWinnerPawn = document.querySelector<HTMLImageElement>(".end-overlay__pa
 const endBackButton = document.querySelector<HTMLButtonElement>(".end-overlay__back-btn");
 let revealedCards: HTMLButtonElement[] = [];
 let isComparingCards = false;
-let hasGameEnded = false;
+let hasEndSequenceStarted = false;
 let currentPlayer: Player = getStoredStartingPlayer();
 const scores: Record<Player, number> = {
     Blue: 0,
@@ -74,7 +77,13 @@ function switchCurrentPlayer() {
 function getSelectedCardCount() {
     const storedCardCount = localStorage.getItem("memoryCardCount");
     const parsedCardCount = storedCardCount ? Number.parseInt(storedCardCount, 10) : 16;
-    if (parsedCardCount === 16 || parsedCardCount === 24 || parsedCardCount === 32) {
+
+    if (parsedCardCount === 32) {
+        localStorage.setItem("memoryCardCount", "36");
+        return 36;
+    }
+
+    if (parsedCardCount === 16 || parsedCardCount === 24 || parsedCardCount === 36) {
         return parsedCardCount;
     }
     return 16;
@@ -82,13 +91,11 @@ function getSelectedCardCount() {
 
 function getGridColumnCount(cardCount: number) {
     if (cardCount === 24) return 6;
-    if (cardCount === 32) return 8;
+    if (cardCount === 36) return 6;
     return 4;
 }
 
-function getCardSize(cardCount: number) {
-    if (cardCount === 24) return 84;
-    if (cardCount === 32) return 64;
+function getCardSize(_cardCount: number) {
     return 110;
 }
 
@@ -147,8 +154,37 @@ function getWinnerData() {
     };
 }
 
+function updateGameOverScoreboard() {
+    if (gameOverBlueScore) {
+        gameOverBlueScore.textContent = String(scores.Blue);
+    }
+
+    if (gameOverOrangeScore) {
+        gameOverOrangeScore.textContent = String(scores.Orange);
+    }
+}
+
+function showGameOverOverlay() {
+    if (!gameOverOverlay) {
+        return;
+    }
+
+    updateGameOverScoreboard();
+    gameOverOverlay.classList.add("is-visible");
+    gameOverOverlay.setAttribute("aria-hidden", "false");
+}
+
+function hideGameOverOverlay() {
+    if (!gameOverOverlay) {
+        return;
+    }
+
+    gameOverOverlay.classList.remove("is-visible");
+    gameOverOverlay.setAttribute("aria-hidden", "true");
+}
+
 function showEndOverlay() {
-    if (!endOverlay || hasGameEnded) {
+    if (!endOverlay || endOverlay.classList.contains("is-visible")) {
         return;
     }
 
@@ -169,19 +205,25 @@ function showEndOverlay() {
         endWinnerPawn.alt = winnerData.pawnAlt;
     }
 
-    hasGameEnded = true;
     endOverlay.classList.add("is-visible");
     endOverlay.setAttribute("aria-hidden", "false");
 }
 
 function checkForGameEnd() {
-    if (!isGameFinished() || hasGameEnded) {
+    if (!isGameFinished() || hasEndSequenceStarted) {
         return;
     }
 
+    hasEndSequenceStarted = true;
+
     window.setTimeout(() => {
-        showEndOverlay();
-    }, 500);
+        showGameOverOverlay();
+
+        window.setTimeout(() => {
+            hideGameOverOverlay();
+            showEndOverlay();
+        }, 2200);
+    }, 450);
 }
 
 function checkRevealedCards() {

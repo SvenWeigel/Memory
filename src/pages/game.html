@@ -58,6 +58,17 @@
       </div>
     </div>
 
+    <div class="game-over-overlay" aria-hidden="true">
+      <div class="game-over-overlay__dialog" role="dialog" aria-modal="true" aria-labelledby="game-over-title">
+        <h2 id="game-over-title" class="game-over-overlay__title">Game over</h2>
+        <p class="game-over-overlay__label">Final score</p>
+        <div class="game-over-overlay__score-row">
+          <span class="game-over-overlay__score game-over-overlay__score--blue">Blue <span class="game-over-overlay__score-value--blue">0</span></span>
+          <span class="game-over-overlay__score game-over-overlay__score--orange">Orange <span class="game-over-overlay__score-value--orange">0</span></span>
+        </div>
+      </div>
+    </div>
+
     <div class="end-overlay" aria-hidden="true">
       <div class="end-overlay__dialog" role="dialog" aria-modal="true" aria-labelledby="end-title">
         <img class="end-overlay__confetti" src="/assets/confetti.png" alt="confetti" />
