@@ -9,75 +9,126 @@
   </head>
   <body>
     <main class="game-content">
-    <header>
-      <div class="header__score">
-        <div class="header__score__left">
-          <span>
-            <img src="/assets/label-blue.png" alt="blue-label" />
-            Blue
-            <span class="header__score-value header__score-value--blue">0</span>
+      <header>
+        <div class="header__score">
+          <div class="header__score__left">
+            <span>
+              <img src="/assets/label-blue.png" alt="blue-label" />
+              Blue
+              <span class="header__score-value header__score-value--blue"
+                >0</span
+              >
             </span>
-        </div>
-        <div class="header__score__right">
-          <span>
-            <img src="/assets/label-orange.png" alt="orange-label" />
-            Orange
-            <span class="header__score-value header__score-value--orange">0</span>
+          </div>
+          <div class="header__score__right">
+            <span>
+              <img src="/assets/label-orange.png" alt="orange-label" />
+              Orange
+              <span class="header__score-value header__score-value--orange"
+                >0</span
+              >
             </span>
+          </div>
         </div>
-      </div>
-      <div class="header__current-player">
-        <span>
-          Current Player:
-          <img class="header__current-player__icon" src="/assets/label-blue.png" alt="blue-label" />
-        </span>
-      </div>
-      <div class="header__exit">
-        <button class="exit-btn" type="button">
-          <img class="exit-btn__icon" src="/assets/move_item.png" alt="exit-btn__icon" />
-          Exit Game
-        </button>
-      </div>
-    </header>
-
-    <section class="game-board">
-      <div class="game-board__grid"></div>
-    </section>
-
-    <div class="exit-overlay" aria-hidden="true">
-      <div class="exit-overlay__dialog" role="dialog" aria-modal="true" aria-labelledby="exit-dialog-title">
-        <p id="exit-dialog-title" class="exit-overlay__text">Do you want to leave the game?</p>
-        <div class="exit-overlay__actions">
-          <button class="exit-btn exit-overlay__btn-close" type="button">
-            Continue Game
-          </button>
-          <button class="exit-btn exit-overlay__btn-settings" type="button">
+        <div class="header__current-player">
+          <span>
+            Current Player:
+            <img
+              class="header__current-player__icon"
+              src="/assets/label-blue.png"
+              alt="blue-label"
+            />
+          </span>
+        </div>
+        <div class="header__exit">
+          <button class="exit-btn" type="button">
+            <img
+              class="exit-btn__icon"
+              src="/assets/move_item.png"
+              alt="exit-btn__icon"
+            />
             Exit Game
           </button>
         </div>
-      </div>
-    </div>
+      </header>
 
-    <div class="game-over-overlay" aria-hidden="true">
-      <div class="game-over-overlay__dialog" role="dialog" aria-modal="true" aria-labelledby="game-over-title">
-        <h2 id="game-over-title" class="game-over-overlay__title">Game over</h2>
-        <p class="game-over-overlay__label">Final score</p>
-        <div class="game-over-overlay__score-row">
-          <span class="game-over-overlay__score game-over-overlay__score--blue">Blue <span class="game-over-overlay__score-value--blue">0</span></span>
-          <span class="game-over-overlay__score game-over-overlay__score--orange">Orange <span class="game-over-overlay__score-value--orange">0</span></span>
+      <section class="game-board">
+        <div class="game-board__grid"></div>
+      </section>
+
+      <div class="exit-overlay" aria-hidden="true">
+        <div
+          class="exit-overlay__dialog"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="exit-dialog-title"
+        >
+          <p id="exit-dialog-title" class="exit-overlay__text">
+            Do you want to leave the game?
+          </p>
+          <div class="exit-overlay__actions">
+            <button class="exit-btn exit-overlay__btn-close" type="button">
+              Continue Game
+            </button>
+            <button class="exit-btn exit-overlay__btn-settings" type="button">
+              Exit Game
+            </button>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="end-overlay" aria-hidden="true">
-      <div class="end-overlay__dialog" role="dialog" aria-modal="true" aria-labelledby="end-title">
-        <img class="end-overlay__confetti" src="/assets/confetti.png" alt="confetti" />
-        <p class="end-overlay__label">The winner is</p>
-        <h2 id="end-title" class="end-overlay__winner">Blue Player</h2>
-        <img class="end-overlay__pawn" src="/assets/pawn-blue.png" alt="winner pawn" />
-        <button class="exit-btn end-overlay__back-btn" type="button">Back to start</button>
+      <div class="game-over-overlay" aria-hidden="true">
+        <div
+          class="game-over-overlay__dialog"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="game-over-title"
+        >
+          <h2 id="game-over-title" class="game-over-overlay__title">
+            Game over
+          </h2>
+          <p class="game-over-overlay__label">Final score</p>
+          <div class="game-over-overlay__score-row">
+            <span
+              class="game-over-overlay__score game-over-overlay__score--blue"
+              >Blue
+              <span class="game-over-overlay__score-value--blue">0</span></span
+            >
+            <span
+              class="game-over-overlay__score game-over-overlay__score--orange"
+              >Orange
+              <span class="game-over-overlay__score-value--orange"
+                >0</span
+              ></span
+            >
+          </div>
+        </div>
       </div>
-    </div>
-  </main>
+
+      <div class="end-overlay" aria-hidden="true">
+        <div
+          class="end-overlay__dialog"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="end-title"
+        >
+          <img
+            class="end-overlay__confetti"
+            src="/assets/confetti.png"
+            alt="confetti"
+          />
+          <p class="end-overlay__label">The winner is</p>
+          <h2 id="end-title" class="end-overlay__winner">Blue Player</h2>
+          <img
+            class="end-overlay__pawn"
+            src="/assets/pawn-blue.png"
+            alt="winner pawn"
+          />
+          <button class="exit-btn end-overlay__back-btn" type="button">
+            Back to start
+          </button>
+        </div>
+      </div>
+    </main>
   </body>
 </html>

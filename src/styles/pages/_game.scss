@@ -30,34 +30,34 @@ header {
     box-sizing: border-box;
   }
 
-  .exit-btn{
-    background-color: #F3832D;
+  .exit-btn {
+    background-color: #f3832d;
     color: white;
     border-radius: 10px;
     border-color: #f58e39;
     border: 1px solid #f58e39;
   }
 
-  .header__score{
+  .header__score {
     background-color: white;
     border-radius: 10px;
-  }
 
-  .header__score__left > span,
-  .header__score__right > span {
-    font-size: 0;
-  }
+    &__left > span,
+    &__right > span {
+      font-size: 0;
+    }
 
-  .header__score-value {
-    font-size: 24px;
-    line-height: 1;
-  }
+    &-value {
+      font-size: 24px;
+      line-height: 1;
+    }
 
-  .header__score__left img,
-  .header__score__right img {
-    width: 20px;
-    height: 20px;
-    object-fit: contain;
+    &__left img,
+    &__right img {
+      width: 20px;
+      height: 20px;
+      object-fit: contain;
+    }
   }
 
   .end-overlay__back-btn {
@@ -70,82 +70,80 @@ header {
     object-fit: contain;
   }
 
-  .exit-overlay__dialog{
+  .exit-overlay__dialog {
     background: white;
-    
   }
 
-  .exit-overlay__text{
+  .exit-overlay__text {
     color: #f58e39;
   }
 
   .game-over-overlay {
     background: rgba(245, 142, 57, 1);
+
+    &__title {
+      color: white;
+    }
+
+    &__score-row {
+      background-color: white;
+    }
+
+    &__score {
+      font-size: 0;
+      gap: 10px;
+
+      &--blue::before,
+      &--orange::before {
+        content: "";
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+      }
+
+      &--blue::before {
+        background-image: url("/assets/pawn-blue.png");
+      }
+
+      &--orange::before {
+        background-image: url("/assets/pawn-orange.png");
+      }
+    }
+
+    &__score-value--blue,
+    &__score-value--orange {
+      font-size: clamp(24px, 3vw, 34px);
+      line-height: 1;
+    }
   }
 
-  .game-over-overlay__title{
-    color: white;
-  }
-
-  .game-over-overlay__score-row{
-    background-color: white;
-  }
-
-  .game-over-overlay__score {
-    font-size: 0;
-    gap: 10px;
-  }
-
-  .game-over-overlay__score--blue::before,
-  .game-over-overlay__score--orange::before {
-    content: "";
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-  }
-
-  .game-over-overlay__score--blue::before {
-    background-image: url("/assets/pawn-blue.png");
-  }
-
-  .game-over-overlay__score--orange::before {
-    background-image: url("/assets/pawn-orange.png");
-  }
-
-  .game-over-overlay__score-value--blue,
-  .game-over-overlay__score-value--orange {
-    font-size: clamp(24px, 3vw, 34px);
-    line-height: 1;
-  }
-
-  .end-overlay{
+  .end-overlay {
     background: white;
-  }
 
-  .end-overlay__dialog{ 
-    color: #f58e39;
-  }
+    &__dialog {
+      color: #f58e39;
+    }
 
-  .end-overlay__winner {
-    display: block;
-    margin-bottom: 12px;
-    color: #A45212;
-  }
+    &__winner {
+      display: block;
+      margin-bottom: 12px;
+      color: #a45212;
+    }
 
-  .end-overlay__confetti {
-    display: none;
-  }
+    &__confetti {
+      display: none;
+    }
 
-  .end-overlay__pawn {
-    background: #F7E6D5;
-    padding: 20px;
-    box-sizing: content-box;
-    box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.25);
+    &__pawn {
+      background: #f7e6d5;
+      padding: 20px;
+      box-sizing: content-box;
+      box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.25);
+    }
   }
-  
 }
 
 .header__score {
@@ -221,7 +219,11 @@ header {
 
   &__dialog {
     width: min(560px, 100%);
-    background: linear-gradient(180deg, rgba(31, 40, 45, 0.96) 0%, rgba(17, 24, 29, 0.96) 100%);
+    background: linear-gradient(
+      180deg,
+      rgba(31, 40, 45, 0.96) 0%,
+      rgba(17, 24, 29, 0.96) 100%
+    );
     border: 2px solid rgba(134, 233, 214, 0.35);
     box-shadow: 0 20px 55px rgba(0, 0, 0, 0.45);
     border-radius: 14px;
