@@ -18,6 +18,19 @@ function getCheckedLabel(groupSelector: string) {
   return rawText.trim();
 }
 
+function updatePreview() {
+  const themeText = getCheckedLabel(".setting__game-themes");
+  const previewImg = document.querySelector<HTMLImageElement>(".pre-view-game img");
+  
+  if (previewImg) {
+    if (themeText.includes("Food")) {
+      previewImg.src = "/assets/preview-food.png";
+    } else {
+      previewImg.src = "/assets/preview-code.png";
+    }
+  }
+}
+
 function updateChooseBarText() {
   const themeText = getCheckedLabel(".setting__game-themes");
   const playerText = getCheckedLabel(".setting__choose-player");
@@ -46,6 +59,10 @@ document.addEventListener("DOMContentLoaded", () => {
     ".setting__options__list",
   );
   const startBtn = document.querySelector<HTMLButtonElement>("#start-btn");
+  const themesList = document.querySelector<HTMLUListElement>(
+    ".setting__game-themes .setting__options__list",
+  );
+  
   lists.forEach((list) => {
     list.addEventListener("change", (e) => {
       const target = e.target as HTMLInputElement;
@@ -53,10 +70,16 @@ document.addEventListener("DOMContentLoaded", () => {
       uncheckOthers(list, target);
       updateStartBtn(lists, startBtn);
       updateChooseBarText();
+      
+      if (list === themesList) {
+        updatePreview();
+      }
     });
   });
+  
   updateStartBtn(lists, startBtn);
   updateChooseBarText();
+  updatePreview();
 });
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -65,12 +88,19 @@ document.addEventListener("DOMContentLoaded", () => {
   startBtn.addEventListener("click", () => {
     const boardSizeText = getCheckedLabel(".setting__board-size");
     const playerText = getCheckedLabel(".setting__choose-player");
+    const themeText = getCheckedLabel(".setting__game-themes");
     const selectedCards = Number.parseInt(boardSizeText, 10);
+    
     if (!Number.isNaN(selectedCards)) {
       localStorage.setItem("memoryCardCount", String(selectedCards));
     }
     if (playerText === "Blue" || playerText === "Orange") {
       localStorage.setItem("memoryStartingPlayer", playerText);
+    }
+    if (themeText.includes("Food")) {
+      localStorage.setItem("memoryTheme", "food");
+    } else {
+      localStorage.setItem("memoryTheme", "code");
     }
     window.location.href = "./game.html";
   });

@@ -1,4 +1,4 @@
-import { buildCodeThemePairs, codeThemeBackSide } from "./cards";
+import { buildCodeThemePairs, buildFoodThemePairs, codeThemeBackSide, foodThemeBackSide } from "./cards";
 
 type Player = "Blue" | "Orange";
 
@@ -34,6 +34,24 @@ function getStoredStartingPlayer(): Player {
         return storedPlayer;
     }
     return "Blue";
+}
+
+function getStoredTheme(): "code" | "food" {
+    const storedTheme = localStorage.getItem("memoryTheme");
+    if (storedTheme === "food") {
+        return "food";
+    }
+    return "code";
+}
+
+function getThemeBuildFunction() {
+    const theme = getStoredTheme();
+    return theme === "food" ? buildFoodThemePairs : buildCodeThemePairs;
+}
+
+function getThemeBackSide() {
+    const theme = getStoredTheme();
+    return theme === "food" ? foodThemeBackSide : codeThemeBackSide;
 }
 
 function getPlayerLabelImage(player: Player) {
@@ -271,7 +289,9 @@ function renderGrid(){
         const cardCount = getSelectedCardCount();
         const columnCount = getGridColumnCount(cardCount);
         const cardSize = getCardSize(cardCount);
-        const cardPairs = buildCodeThemePairs(cardCount);
+        const buildFunction = getThemeBuildFunction();
+        const backSideImage = getThemeBackSide();
+        const cardPairs = buildFunction(cardCount);
 
         grid.style.display = "grid";
         grid.style.gridTemplateColumns = `repeat(${columnCount}, ${cardSize}px)`;
@@ -290,7 +310,7 @@ function renderGrid(){
 
             const backFace = document.createElement("img");
             backFace.classList.add("card__face", "card__face--back");
-            backFace.src = codeThemeBackSide;
+            backFace.src = backSideImage;
             backFace.alt = "Card back";
 
             const frontFace = document.createElement("img");

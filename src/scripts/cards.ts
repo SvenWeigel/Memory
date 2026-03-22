@@ -21,6 +21,29 @@ export const codeThemeCardImages = [
 	"/code-theme/vsc-icon.png",
 ];
 
+export const foodThemeBackSide = "/food-theme/back-side-food-theme.png";
+
+export const foodThemeCardImages = [
+	"/food-theme/bowle.png",
+	"/food-theme/bucket.png",
+	"/food-theme/burger.png",
+	"/food-theme/cake.png",
+	"/food-theme/chocolate.png",
+	"/food-theme/corndog.png",
+	"/food-theme/donut.png",
+	"/food-theme/frise.png",
+	"/food-theme/ice.png",
+	"/food-theme/macarons.png",
+	"/food-theme/muffin.png",
+	"/food-theme/pizza.png",
+	"/food-theme/pretzel.png",
+	"/food-theme/pudding.png",
+	"/food-theme/sandwich.png",
+	"/food-theme/sushi.png",
+	"/food-theme/tacco.png",
+	"/food-theme/wrap.png",
+];
+
 function shuffle<T>(items: T[]): T[] {
 	const copy = [...items];
 	for (let i = copy.length - 1; i > 0; i--) {
@@ -43,5 +66,19 @@ export function buildCodeThemePairs(cardCount: number): string[] {
 	}
 
 	const randomizedFaces = shuffle(codeThemeCardImages).slice(0, pairCount);
+	return shuffle([...randomizedFaces, ...randomizedFaces]);
+}
+
+export function buildFoodThemePairs(cardCount: number): string[] {
+	const pairCount = cardCount / 2;
+	if (!Number.isInteger(pairCount) || pairCount < 1) {
+		return [];
+	}
+
+	if (pairCount > foodThemeCardImages.length) {
+		throw new Error("Not enough card images for selected board size.");
+	}
+
+	const randomizedFaces = shuffle(foodThemeCardImages).slice(0, pairCount);
 	return shuffle([...randomizedFaces, ...randomizedFaces]);
 }
