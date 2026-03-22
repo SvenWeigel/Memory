@@ -3,6 +3,7 @@ import { buildCodeThemePairs, buildFoodThemePairs, codeThemeBackSide, foodThemeB
 type Player = "Blue" | "Orange";
 
 let grid = document.querySelector(".game-board__grid") as HTMLDivElement;
+const gameContent = document.querySelector<HTMLElement>(".game-content");
 const blueScore = document.querySelector<HTMLSpanElement>(".header__score-value--blue");
 const orangeScore = document.querySelector<HTMLSpanElement>(".header__score-value--orange");
 const currentPlayerName = document.querySelector<HTMLSpanElement>(".header__current-player__name");
@@ -52,6 +53,11 @@ function getThemeBuildFunction() {
 function getThemeBackSide() {
     const theme = getStoredTheme();
     return theme === "food" ? foodThemeBackSide : codeThemeBackSide;
+}
+
+function applyThemeStyles() {
+    const theme = getStoredTheme();
+    gameContent?.classList.toggle("theme-food", theme === "food");
 }
 
 function getPlayerLabelImage(player: Player) {
@@ -366,6 +372,7 @@ function setupEndOverlay() {
 
 updateScoreboard();
 updateCurrentPlayerDisplay();
+applyThemeStyles();
 renderGrid();
 setupExitOverlay();
 setupEndOverlay();

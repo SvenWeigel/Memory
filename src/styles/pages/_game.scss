@@ -16,6 +16,36 @@ header {
   flex-shrink: 0;
 }
 
+.game-content.theme-food {
+  background-color: #ffffff;
+
+  header {
+    background-color: #ddd2c5;
+    color: #ad5a16;
+    width: min(1420px, calc(100% - 16px));
+    margin: 8px auto 0;
+    border-radius: 10px;
+    padding: 12px 18px;
+    box-sizing: border-box;
+  }
+
+  .exit-btn{
+    background-color: white;
+    color: #f58e39;
+    border-radius: 10px;
+    border-color: #f58e39;
+    border: 1px solid #f58e39;
+  }
+
+  .header__score{
+    background-color: white;
+  }
+
+  .exit-btn__icon {
+    filter: brightness(0) saturate(100%) invert(56%) sepia(95%) saturate(1334%) hue-rotate(350deg) brightness(101%) contrast(93%);
+  }
+}
+
 .header__score {
   display: flex;
   gap: 20px;
