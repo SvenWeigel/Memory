@@ -6,6 +6,8 @@ let grid = document.querySelector(".game-board__grid") as HTMLDivElement;
 const gameContent = document.querySelector<HTMLElement>(".game-content");
 const blueScore = document.querySelector<HTMLSpanElement>(".header__score-value--blue");
 const orangeScore = document.querySelector<HTMLSpanElement>(".header__score-value--orange");
+const blueScoreIcon = document.querySelector<HTMLImageElement>(".header__score__left img");
+const orangeScoreIcon = document.querySelector<HTMLImageElement>(".header__score__right img");
 const currentPlayerName = document.querySelector<HTMLSpanElement>(".header__current-player__name");
 const currentPlayerIcon = document.querySelector<HTMLImageElement>(".header__current-player__icon");
 const exitButton = document.querySelector<HTMLButtonElement>(".header__exit .exit-btn");
@@ -57,10 +59,35 @@ function getThemeBackSide() {
 
 function applyThemeStyles() {
     const theme = getStoredTheme();
-    gameContent?.classList.toggle("theme-food", theme === "food");
+    const isFoodTheme = theme === "food";
+
+    gameContent?.classList.toggle("theme-food", isFoodTheme);
+
+    if (blueScoreIcon) {
+        blueScoreIcon.src = isFoodTheme ? "/assets/pawn-blue.png" : "/assets/label-blue.png";
+        blueScoreIcon.alt = isFoodTheme ? "blue pawn" : "blue label";
+    }
+
+    if (orangeScoreIcon) {
+        orangeScoreIcon.src = isFoodTheme ? "/assets/pawn-orange.png" : "/assets/label-orange.png";
+        orangeScoreIcon.alt = isFoodTheme ? "orange pawn" : "orange label";
+    }
+
+    if (endBackButton) {
+        endBackButton.textContent = isFoodTheme ? "HOME" : "Back to start";
+    }
 }
 
 function getPlayerLabelImage(player: Player) {
+    const theme = getStoredTheme();
+
+    if (theme === "food") {
+        if (player === "Orange") {
+            return "/assets/pawn-orange.png";
+        }
+        return "/assets/pawn-blue.png";
+    }
+
     if (player === "Orange") {
         return "/assets/label-orange.png";
     }

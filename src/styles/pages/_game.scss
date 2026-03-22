@@ -18,6 +18,7 @@ header {
 
 .game-content.theme-food {
   background-color: #ffffff;
+  font-family: "kleeOne", sans-serif;
 
   header {
     background-color: #ddd2c5;
@@ -30,8 +31,8 @@ header {
   }
 
   .exit-btn{
-    background-color: white;
-    color: #f58e39;
+    background-color: #F3832D;
+    color: white;
     border-radius: 10px;
     border-color: #f58e39;
     border: 1px solid #f58e39;
@@ -41,9 +42,109 @@ header {
     background-color: white;
   }
 
-  .exit-btn__icon {
-    filter: brightness(0) saturate(100%) invert(56%) sepia(95%) saturate(1334%) hue-rotate(350deg) brightness(101%) contrast(93%);
+  .header__score__left > span,
+  .header__score__right > span {
+    font-size: 0;
   }
+
+  .header__score-value {
+    font-size: 24px;
+    line-height: 1;
+  }
+
+  .header__score__left img,
+  .header__score__right img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+  }
+
+  .end-overlay__back-btn {
+    color: white;
+  }
+
+  .header__current-player__icon {
+    width: 25px;
+    height: 25px;
+    object-fit: contain;
+  }
+
+  .exit-overlay__dialog{
+    background: white;
+    
+  }
+
+  .exit-overlay__text{
+    color: #f58e39;
+  }
+
+  .game-over-overlay {
+    background: rgba(245, 142, 57, 1);
+  }
+
+  .game-over-overlay__title{
+    color: white;
+  }
+
+  .game-over-overlay__score-row{
+    background-color: white;
+  }
+
+  .game-over-overlay__score {
+    font-size: 0;
+    gap: 10px;
+  }
+
+  .game-over-overlay__score--blue::before,
+  .game-over-overlay__score--orange::before {
+    content: "";
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+  }
+
+  .game-over-overlay__score--blue::before {
+    background-image: url("/assets/pawn-blue.png");
+  }
+
+  .game-over-overlay__score--orange::before {
+    background-image: url("/assets/pawn-orange.png");
+  }
+
+  .game-over-overlay__score-value--blue,
+  .game-over-overlay__score-value--orange {
+    font-size: clamp(24px, 3vw, 34px);
+    line-height: 1;
+  }
+
+  .end-overlay{
+    background: white;
+  }
+
+  .end-overlay__dialog{ 
+    color: #f58e39;
+  }
+
+  .end-overlay__winner {
+    display: block;
+    margin-bottom: 12px;
+    color: #A45212;
+  }
+
+  .end-overlay__confetti {
+    display: none;
+  }
+
+  .end-overlay__pawn {
+    background: #F7E6D5;
+    padding: 20px;
+    box-sizing: content-box;
+    box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.25);
+  }
+  
 }
 
 .header__score {
