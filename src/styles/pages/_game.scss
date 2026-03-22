@@ -72,3 +72,136 @@ header {
     width: fit-content;
   }
 }
+
+.exit-overlay {
+  position: fixed;
+  inset: 0;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  background: rgba(7, 14, 18, 0.78);
+  z-index: 1000;
+  padding: 24px;
+
+  &.is-visible {
+    display: flex;
+  }
+
+  &__dialog {
+    width: min(560px, 100%);
+    background: linear-gradient(180deg, rgba(31, 40, 45, 0.96) 0%, rgba(17, 24, 29, 0.96) 100%);
+    border: 2px solid rgba(134, 233, 214, 0.35);
+    box-shadow: 0 20px 55px rgba(0, 0, 0, 0.45);
+    border-radius: 14px;
+    padding: 36px 28px;
+  }
+
+  &__text {
+    text-align: center;
+    color: #ffffff;
+    margin: 0;
+    font-size: clamp(22px, 3vw, 30px);
+    font-weight: 600;
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 30px;
+  }
+}
+
+.end-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1100;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(14, 20, 24, 0.94);
+  padding: 20px;
+
+  &.is-visible {
+    display: flex;
+  }
+
+  &__dialog {
+    width: min(740px, 100%);
+    text-align: center;
+    color: #ffffff;
+  }
+
+  &__confetti {
+    width: min(100%, 640px);
+    max-height: 150px;
+    object-fit: contain;
+    margin-bottom: 22px;
+  }
+
+  &__label {
+    margin: 0;
+    font-size: clamp(20px, 3vw, 38px);
+  }
+
+  &__winner {
+    margin: 10px 0 0;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: clamp(32px, 6vw, 62px);
+
+    &--blue {
+      color: #2bb1ff;
+    }
+
+    &--orange {
+      color: #f59a3d;
+    }
+
+    &--draw {
+      color: #86e9d6;
+    }
+  }
+
+  &__loser {
+    margin: 10px 0 0;
+    font-size: clamp(20px, 3vw, 32px);
+    color: #86e9d6;
+  }
+
+  &__pawn {
+    display: block;
+    width: clamp(120px, 24vw, 220px);
+    margin: 24px auto 0;
+  }
+
+  &__back-btn {
+    margin: 28px auto 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .exit-overlay__actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .exit-overlay .exit-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .end-overlay__label {
+    font-size: 24px;
+  }
+
+  .end-overlay__winner {
+    font-size: 36px;
+  }
+
+  .end-overlay__loser {
+    font-size: 22px;
+  }
+}

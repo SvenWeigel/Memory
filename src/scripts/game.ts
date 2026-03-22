@@ -7,8 +7,18 @@ const blueScore = document.querySelector<HTMLSpanElement>(".header__score-value-
 const orangeScore = document.querySelector<HTMLSpanElement>(".header__score-value--orange");
 const currentPlayerName = document.querySelector<HTMLSpanElement>(".header__current-player__name");
 const currentPlayerIcon = document.querySelector<HTMLImageElement>(".header__current-player__icon");
+const exitButton = document.querySelector<HTMLButtonElement>(".header__exit .exit-btn");
+const exitOverlay = document.querySelector<HTMLDivElement>(".exit-overlay");
+const closeOverlayButton = document.querySelector<HTMLButtonElement>(".exit-overlay__btn-close");
+const settingsOverlayButton = document.querySelector<HTMLButtonElement>(".exit-overlay__btn-settings");
+const endOverlay = document.querySelector<HTMLDivElement>(".end-overlay");
+const endWinnerText = document.querySelector<HTMLHeadingElement>(".end-overlay__winner");
+const endLoserText = document.querySelector<HTMLParagraphElement>(".end-overlay__loser");
+const endWinnerPawn = document.querySelector<HTMLImageElement>(".end-overlay__pawn");
+const endBackButton = document.querySelector<HTMLButtonElement>(".end-overlay__back-btn");
 let revealedCards: HTMLButtonElement[] = [];
 let isComparingCards = false;
+let hasGameEnded = false;
 let currentPlayer: Player = getStoredStartingPlayer();
 const scores: Record<Player, number> = {
     Blue: 0,
@@ -106,6 +116,74 @@ function resetRevealedCards() {
     isComparingCards = false;
 }
 
+function isGameFinished() {
+    return grid.querySelectorAll<HTMLButtonElement>(".card:not(.is-matched)").length === 0;
+}
+
+function getWinnerData() {
+    if (scores.Blue > scores.Orange) {
+        return {
+            winner: "Blue Player",
+            pawn: "/assets/pawn-blue.png",
+            pawnAlt: "blue pawn",
+            winnerClass: "end-overlay__winner--blue",
+        };
+    }
+
+    if (scores.Orange > scores.Blue) {
+        return {
+            winner: "Orange Player",
+            pawn: "/assets/pawn-orange.png",
+            pawnAlt: "orange pawn",
+            winnerClass: "end-overlay__winner--orange",
+        };
+    }
+
+    return {
+        winner: "Draw",
+        pawn: "/assets/pawn-blue.png",
+        pawnAlt: "pawn",
+        winnerClass: "end-overlay__winner--draw",
+    };
+}
+
+function showEndOverlay() {
+    if (!endOverlay || hasGameEnded) {
+        return;
+    }
+
+    const winnerData = getWinnerData();
+
+    if (endWinnerText) {
+        endWinnerText.textContent = winnerData.winner;
+        endWinnerText.classList.remove(
+            "end-overlay__winner--blue",
+            "end-overlay__winner--orange",
+            "end-overlay__winner--draw",
+        );
+        endWinnerText.classList.add(winnerData.winnerClass);
+    }
+
+    if (endWinnerPawn) {
+        endWinnerPawn.src = winnerData.pawn;
+        endWinnerPawn.alt = winnerData.pawnAlt;
+    }
+
+    hasGameEnded = true;
+    endOverlay.classList.add("is-visible");
+    endOverlay.setAttribute("aria-hidden", "false");
+}
+
+function checkForGameEnd() {
+    if (!isGameFinished() || hasGameEnded) {
+        return;
+    }
+
+    window.setTimeout(() => {
+        showEndOverlay();
+    }, 500);
+}
+
 function checkRevealedCards() {
     const [firstCard, secondCard] = revealedCards;
 
@@ -117,6 +195,7 @@ function checkRevealedCards() {
     if (isMatchingPair(firstCard, secondCard)) {
         awardPointToCurrentPlayer();
         lockMatchedPair(firstCard, secondCard);
+        checkForGameEnd();
         resetRevealedCards();
         return;
     }
@@ -185,6 +264,46 @@ function renderGrid(){
     }
 }
 
+function openExitOverlay() {
+    if (!exitOverlay) {
+        return;
+    }
+
+    exitOverlay.classList.add("is-visible");
+    exitOverlay.setAttribute("aria-hidden", "false");
+}
+
+function closeExitOverlay() {
+    if (!exitOverlay) {
+        return;
+    }
+
+    exitOverlay.classList.remove("is-visible");
+    exitOverlay.setAttribute("aria-hidden", "true");
+}
+
+function setupExitOverlay() {
+    exitButton?.addEventListener("click", openExitOverlay);
+    closeOverlayButton?.addEventListener("click", closeExitOverlay);
+    settingsOverlayButton?.addEventListener("click", () => {
+        window.location.href = "./settings.html";
+    });
+
+    document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+            closeExitOverlay();
+        }
+    });
+}
+
+function setupEndOverlay() {
+    endBackButton?.addEventListener("click", () => {
+        window.location.href = "/index.html";
+    });
+}
+
 updateScoreboard();
 updateCurrentPlayerDisplay();
 renderGrid();
+setupExitOverlay();
+setupEndOverlay();

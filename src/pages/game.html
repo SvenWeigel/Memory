@@ -33,13 +33,41 @@
         </span>
       </div>
       <div class="header__exit">
-        <button class="exit-btn"><img src="/assets/move_item.png" alt="exit-btn__icon">Exit Game</button>
+        <button class="exit-btn" type="button">
+          <img class="exit-btn__icon" src="/assets/move_item.png" alt="exit-btn__icon" />
+          Exit Game
+        </button>
       </div>
     </header>
 
     <section class="game-board">
       <div class="game-board__grid"></div>
     </section>
+
+    <div class="exit-overlay" aria-hidden="true">
+      <div class="exit-overlay__dialog" role="dialog" aria-modal="true" aria-labelledby="exit-dialog-title">
+        <p id="exit-dialog-title" class="exit-overlay__text">Do you want to leave the game?</p>
+        <div class="exit-overlay__actions">
+          <button class="exit-btn exit-overlay__btn-close" type="button">
+            Continue Game
+          </button>
+          <button class="exit-btn exit-overlay__btn-settings" type="button">
+            Exit Game
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="end-overlay" aria-hidden="true">
+      <div class="end-overlay__dialog" role="dialog" aria-modal="true" aria-labelledby="end-title">
+        <img class="end-overlay__confetti" src="/assets/confetti.png" alt="confetti" />
+        <p class="end-overlay__label">The winner is</p>
+        <h2 id="end-title" class="end-overlay__winner">Blue Player</h2>
+        <!-- <p class="end-overlay__loser">Orange Player loses</p> -->
+        <img class="end-overlay__pawn" src="/assets/pawn-blue.png" alt="winner pawn" />
+        <button class="exit-btn end-overlay__back-btn" type="button">Back to start</button>
+      </div>
+    </div>
   </main>
   </body>
 </html>
