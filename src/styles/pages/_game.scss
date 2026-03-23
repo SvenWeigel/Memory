@@ -11,13 +11,13 @@
 header {
   display: flex;
   justify-content: space-around;
-  color: white;
+  color: var(--color-white);
   padding-top: 41px;
   flex-shrink: 0;
 }
 
 .game-content.theme-food {
-  background-color: #ffffff;
+  background-color: var(--color-white);
   font-family: "kleeOne", sans-serif;
 
   header {
@@ -32,14 +32,14 @@ header {
 
   .exit-btn {
     background-color: #f3832d;
-    color: white;
+    color: var(--color-white);
     border-radius: 10px;
     border-color: #f58e39;
     border: 1px solid #f58e39;
   }
 
   .header__score {
-    background-color: white;
+    background-color: var(--color-white);
     border-radius: 10px;
 
     &__left > span,
@@ -61,7 +61,7 @@ header {
   }
 
   .end-overlay__back-btn {
-    color: white;
+    color: var(--color-white);
   }
 
   .header__current-player__icon {
@@ -71,7 +71,7 @@ header {
   }
 
   .exit-overlay__dialog {
-    background: white;
+    background: var(--color-white);
   }
 
   .exit-overlay__text {
@@ -82,11 +82,11 @@ header {
     background: rgba(245, 142, 57, 1);
 
     &__title {
-      color: white;
+      color: var(--color-white);
     }
 
     &__score-row {
-      background-color: white;
+      background-color: var(--color-white);
     }
 
     &__score {
@@ -121,7 +121,7 @@ header {
   }
 
   .end-overlay {
-    background: white;
+    background: var(--color-white);
 
     &__dialog {
       color: #f58e39;
@@ -232,7 +232,7 @@ header {
 
   &__text {
     text-align: center;
-    color: #ffffff;
+    color: var(--color-white);
     margin: 0;
     font-size: clamp(22px, 3vw, 30px);
     font-weight: 600;
@@ -264,7 +264,7 @@ header {
   &__dialog {
     width: min(780px, 100%);
     text-align: center;
-    color: #ffffff;
+    color: var(--color-white);
   }
 
   &__title {
@@ -325,7 +325,7 @@ header {
   &__dialog {
     width: min(740px, 100%);
     text-align: center;
-    color: #ffffff;
+    color: var(--color-white);
   }
 
   &__confetti {
@@ -342,7 +342,7 @@ header {
 
   &__winner {
     margin: 10px 0 0;
-    color: #ffffff;
+    color: var(--color-white);
     text-transform: uppercase;
     letter-spacing: 1px;
     font-size: clamp(32px, 6vw, 62px);

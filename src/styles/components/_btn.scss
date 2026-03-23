@@ -30,7 +30,7 @@
 .exit-btn{
     @include mx.flex-center;
     gap: 20px;
-    color: white;
+    color: var(--color-white);
     font-size: 24px;
     font-weight: 400;
     background-color: #86E9D633;
