@@ -55,30 +55,24 @@ function shuffle<T>(items: T[]): T[] {
 	return copy;
 }
 
-export function buildCodeThemePairs(cardCount: number): string[] {
+function buildThemePairs(cardImages: string[], cardCount: number): string[] {
 	const pairCount = cardCount / 2;
 	if (!Number.isInteger(pairCount) || pairCount < 1) {
 		return [];
 	}
 
-	if (pairCount > codeThemeCardImages.length) {
+	if (pairCount > cardImages.length) {
 		throw new Error("Not enough card images for selected board size.");
 	}
 
-	const randomizedFaces = shuffle(codeThemeCardImages).slice(0, pairCount);
+	const randomizedFaces = shuffle(cardImages).slice(0, pairCount);
 	return shuffle([...randomizedFaces, ...randomizedFaces]);
 }
 
+export function buildCodeThemePairs(cardCount: number): string[] {
+	return buildThemePairs(codeThemeCardImages, cardCount);
+}
+
 export function buildFoodThemePairs(cardCount: number): string[] {
-	const pairCount = cardCount / 2;
-	if (!Number.isInteger(pairCount) || pairCount < 1) {
-		return [];
-	}
-
-	if (pairCount > foodThemeCardImages.length) {
-		throw new Error("Not enough card images for selected board size.");
-	}
-
-	const randomizedFaces = shuffle(foodThemeCardImages).slice(0, pairCount);
-	return shuffle([...randomizedFaces, ...randomizedFaces]);
+	return buildThemePairs(foodThemeCardImages, cardCount);
 }

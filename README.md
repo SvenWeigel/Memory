@@ -100,4 +100,3 @@ public/
 
 - Theme, starting player, and card count are stored in `localStorage`.
 - The game currently supports two players (`Blue` and `Orange`).
-- Some UI text is currently mixed (German/English) and can be unified if needed.

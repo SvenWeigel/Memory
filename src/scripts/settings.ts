@@ -4,7 +4,7 @@ function updateStartBtn(
 ) {
   const allChecked = Array.from(lists).every(
     (list) =>
-      list.querySelector<HTMLInputElement>("input[type='checkbox']:checked") !==
+      list.querySelector<HTMLInputElement>("input[type='radio']:checked") !==
       null,
   );
   if (startBtn) startBtn.disabled = !allChecked;
@@ -12,7 +12,7 @@ function updateStartBtn(
 
 function getCheckedLabel(groupSelector: string) {
   const checked = document.querySelector<HTMLInputElement>(
-    `${groupSelector} .setting__options__list input[type='checkbox']:checked`,
+    `${groupSelector} .setting__options__list input[type='radio']:checked`,
   );
   const rawText = checked?.parentElement?.textContent ?? "";
   return rawText.trim();
@@ -48,10 +48,32 @@ function updateChooseBarText() {
 
 function uncheckOthers(list: HTMLUListElement, target: HTMLInputElement) {
   list
-    .querySelectorAll<HTMLInputElement>("input[type='checkbox']")
+    .querySelectorAll<HTMLInputElement>("input[type='radio']")
     .forEach((cb) => {
       if (cb !== target) cb.checked = false;
     });
+}
+
+function setupStartButton(startBtn: HTMLButtonElement | null) {
+  startBtn?.addEventListener("click", () => {
+    const boardSizeText = getCheckedLabel(".setting__board-size");
+    const playerText = getCheckedLabel(".setting__choose-player");
+    const themeText = getCheckedLabel(".setting__game-themes");
+    const selectedCards = Number.parseInt(boardSizeText, 10);
+
+    if (!Number.isNaN(selectedCards)) {
+      localStorage.setItem("memoryCardCount", String(selectedCards));
+    }
+    if (playerText === "Blue" || playerText === "Orange") {
+      localStorage.setItem("memoryStartingPlayer", playerText);
+    }
+    if (themeText.includes("Food")) {
+      localStorage.setItem("memoryTheme", "food");
+    } else {
+      localStorage.setItem("memoryTheme", "code");
+    }
+    window.location.href = "./game.html";
+  });
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -66,7 +88,7 @@ document.addEventListener("DOMContentLoaded", () => {
   lists.forEach((list) => {
     list.addEventListener("change", (e) => {
       const target = e.target as HTMLInputElement;
-      if (target.type !== "checkbox") return;
+      if (target.type !== "radio") return;
       uncheckOthers(list, target);
       updateStartBtn(lists, startBtn);
       updateChooseBarText();
@@ -76,32 +98,10 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   });
+
+  setupStartButton(startBtn);
   
   updateStartBtn(lists, startBtn);
   updateChooseBarText();
   updatePreview();
-});
-
-document.addEventListener("DOMContentLoaded", () => {
-  const startBtn = document.getElementById("start-btn");
-  if (!startBtn) return;
-  startBtn.addEventListener("click", () => {
-    const boardSizeText = getCheckedLabel(".setting__board-size");
-    const playerText = getCheckedLabel(".setting__choose-player");
-    const themeText = getCheckedLabel(".setting__game-themes");
-    const selectedCards = Number.parseInt(boardSizeText, 10);
-    
-    if (!Number.isNaN(selectedCards)) {
-      localStorage.setItem("memoryCardCount", String(selectedCards));
-    }
-    if (playerText === "Blue" || playerText === "Orange") {
-      localStorage.setItem("memoryStartingPlayer", playerText);
-    }
-    if (themeText.includes("Food")) {
-      localStorage.setItem("memoryTheme", "food");
-    } else {
-      localStorage.setItem("memoryTheme", "code");
-    }
-    window.location.href = "./game.html";
-  });
 });

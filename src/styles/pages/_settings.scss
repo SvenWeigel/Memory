@@ -84,10 +84,17 @@
     li {
       display: flex;
       align-items: center;
-      gap: 8px;
       position: relative;
       width: fit-content;
       padding-right: 78px;
+
+      label {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: fit-content;
+        cursor: pointer;
+      }
 
       input {
         @include mx.checkbox;

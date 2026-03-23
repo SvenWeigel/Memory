@@ -46,7 +46,6 @@ export function getSelectedCardCount() {
     : 16;
 
   if (parsedCardCount === 32) {
-    localStorage.setItem("memoryCardCount", "36");
     return 36;
   }
 
@@ -60,13 +59,20 @@ export function getSelectedCardCount() {
   return 16;
 }
 
+export function syncSelectedCardCountStorage() {
+  const selectedCardCount = getSelectedCardCount();
+  if (localStorage.getItem("memoryCardCount") !== String(selectedCardCount)) {
+    localStorage.setItem("memoryCardCount", String(selectedCardCount));
+  }
+}
+
 export function getGridColumnCount(cardCount: number) {
   if (cardCount === 24) return 6;
   if (cardCount === 36) return 6;
   return 4;
 }
 
-export function getCardSize(_cardCount: number) {
+export function getCardSize() {
   return 110;
 }
 

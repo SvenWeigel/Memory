@@ -23,63 +23,78 @@
         <div class="settings-screen__left">
           <div class="setting__game-themes">
             <span class="setting__title"
-              ><img src="/assets/palette.png" alt="" /> Game themes</span
+              ><img src="/assets/palette.svg" alt="" /> Game themes</span
             >
             <div class="setting__options">
               <ul class="setting__options__list">
                 <li>
-                  <input type="checkbox" id="code-vibes" name="code-vibes" />
-                  Code vibes theme
+                  <label for="code-vibes">
+                    <input type="radio" id="code-vibes" name="theme" />
+                    <span>Code vibes theme</span>
+                  </label>
                 </li>
                 <li>
-                  <input
-                    type="checkbox"
-                    id="fruits"
-                    name="fruits"
-                    value="Fruits"
-                  />
-                  Food theme
+                  <label for="fruits">
+                    <input
+                      type="radio"
+                      id="fruits"
+                      name="theme"
+                      value="Fruits"
+                    />
+                    <span>Food theme</span>
+                  </label>
                 </li>
               </ul>
             </div>
           </div>
           <div class="setting__choose-player">
             <span class="setting__title">
-              <img src="/assets/chess_pawn.png" alt="" /> Choose player</span
+              <img src="/assets/chess_pawn.svg" alt="" /> Choose player</span
             >
             <div class="setting__options">
               <ul class="setting__options__list">
                 <li>
-                  <input type="checkbox" id="player1" name="player1" />
-                  Blue
+                  <label for="player1">
+                    <input type="radio" id="player1" name="player" />
+                    <span>Blue</span>
+                  </label>
                 </li>
                 <li>
-                  <input type="checkbox" id="player2" name="player2" /> Orange
+                  <label for="player2">
+                    <input type="radio" id="player2" name="player" />
+                    <span>Orange</span>
+                  </label>
                 </li>
               </ul>
             </div>
           </div>
           <div class="setting__board-size">
             <span class="setting__title">
-              <img src="/assets/style.png" alt="" /> Board size</span
+              <img src="/assets/style.svg" alt="" /> Board size</span
             >
             <div class="setting__options">
               <ul class="setting__options__list">
                 <li>
-                  <input type="checkbox" id="board-4x4" name="board-4x4" />16
-                  Cards
+                  <label for="board-4x4">
+                    <input type="radio" id="board-4x4" name="board-size" />
+                    <span>16 Cards</span>
+                  </label>
                 </li>
                 <li>
-                  <input type="checkbox" id="board-6x6" name="board-6x6" /> 24
-                  Cards
+                  <label for="board-6x6">
+                    <input type="radio" id="board-6x6" name="board-size" />
+                    <span>24 Cards</span>
+                  </label>
                 </li>
                 <li>
-                  <input
-                    type="checkbox"
-                    id="board-6x6-extended"
-                    name="board-6x6-extended"
-                  />
-                  36 Cards
+                  <label for="board-6x6-extended">
+                    <input
+                      type="radio"
+                      id="board-6x6-extended"
+                      name="board-size"
+                    />
+                    <span>36 Cards</span>
+                  </label>
                 </li>
               </ul>
             </div>
@@ -106,7 +121,7 @@
               <button class="start-btn" id="start-btn" type="button" disabled>
                 <img
                   class="choose-bar__btn__icon"
-                  src="/assets/smart_display.png"
+                  src="/assets/smart_display.svg"
                   alt=""
                 />Start
               </button>

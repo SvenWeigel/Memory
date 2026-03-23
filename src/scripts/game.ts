@@ -11,6 +11,7 @@ import {
   getSelectedCardCount,
   getStoredStartingPlayer,
   getStoredTheme,
+  syncSelectedCardCountStorage,
   getWinnerData,
   type Player,
 } from "./gameHelpers";
@@ -312,7 +313,7 @@ function handleCardClick(card: HTMLButtonElement) {
 function getRenderGridData() {
   const cardCount = getSelectedCardCount();
   const columnCount = getGridColumnCount(cardCount);
-  const cardSize = getCardSize(cardCount);
+  const cardSize = getCardSize();
   const buildFunction = getThemeBuildFunction();
   const backSideImage = getThemeBackSide();
   const cardPairs = buildFunction(cardCount);
@@ -413,6 +414,7 @@ function setupEndOverlay() {
 updateScoreboard();
 updateCurrentPlayerDisplay();
 applyThemeStyles();
+syncSelectedCardCountStorage();
 renderGrid();
 setupExitOverlay();
 setupEndOverlay();
