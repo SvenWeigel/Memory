@@ -1,1 +1,0 @@
-import{n as e,t}from"./style-DHRrug2U.js";e((()=>{t();function e(){n(`play-btn`,()=>{window.location.href=`./src/pages/settings.html`})}function n(e,t){let n=document.getElementById(e);n&&n.addEventListener(`click`,t)}e()}))();
