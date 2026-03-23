@@ -1,7 +1,7 @@
 .game-content {
   height: 100vh;
   margin: 0;
-  background-color: rgb(47, 49, 49);
+  background-color: var(--color-bg-dark);
   font-family: "red_rose", sans-serif;
   display: flex;
   flex-direction: column;
@@ -34,8 +34,8 @@ header {
     background-color: #f3832d;
     color: var(--color-white);
     border-radius: 10px;
-    border-color: #f58e39;
-    border: 1px solid #f58e39;
+    border-color: var(--color-accent-orange);
+    border: 1px solid var(--color-accent-orange);
   }
 
   .header__score {
@@ -75,7 +75,7 @@ header {
   }
 
   .exit-overlay__text {
-    color: #f58e39;
+    color: var(--color-accent-orange);
   }
 
   .game-over-overlay {
@@ -124,7 +124,7 @@ header {
     background: var(--color-white);
 
     &__dialog {
-      color: #f58e39;
+      color: var(--color-accent-orange);
     }
 
     &__winner {
@@ -151,11 +151,11 @@ header {
   gap: 20px;
   justify-content: center;
   align-items: center;
-  background-color: #86e9d633;
+  background-color: var(--color-accent-cyan-soft);
   padding: 12px;
 
   &__left {
-    color: #2bb1ff;
+    color: var(--color-accent-blue);
 
     & span {
       display: flex;
@@ -163,8 +163,9 @@ header {
       gap: 8px;
     }
   }
+
   &__right {
-    color: #f58e39;
+    color: var(--color-accent-orange);
 
     & span {
       display: flex;
@@ -269,7 +270,7 @@ header {
 
   &__title {
     margin: 0;
-    color: #62e9d6;
+    color: var(--color-accent-cyan);
     text-transform: uppercase;
     letter-spacing: 1px;
     font-size: clamp(48px, 10vw, 112px);
@@ -299,11 +300,11 @@ header {
     gap: 8px;
 
     &--blue {
-      color: #2bb1ff;
+      color: var(--color-accent-blue);
     }
 
     &--orange {
-      color: #f59a3d;
+      color: var(--color-accent-orange-strong);
     }
   }
 }
@@ -348,22 +349,22 @@ header {
     font-size: clamp(32px, 6vw, 62px);
 
     &--blue {
-      color: #2bb1ff;
+      color: var(--color-accent-blue);
     }
 
     &--orange {
-      color: #f59a3d;
+      color: var(--color-accent-orange-strong);
     }
 
     &--draw {
-      color: #86e9d6;
+      color: var(--color-accent-cyan);
     }
   }
 
   &__loser {
     margin: 10px 0 0;
     font-size: clamp(20px, 3vw, 32px);
-    color: #86e9d6;
+    color: var(--color-accent-cyan);
   }
 
   &__pawn {
